@@ -9,8 +9,9 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AwesomePage } from '../pages/awesome/awesome'
-
+import { AwesomePage } from '../pages/awesome/awesome';
+import { HttpModule } from '@angular/http';
+import { SearchService } from '../search.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AwesomePage } from '../pages/awesome/awesome'
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -35,6 +37,7 @@ import { AwesomePage } from '../pages/awesome/awesome'
   providers: [
     StatusBar,
     SplashScreen,
+    SearchService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

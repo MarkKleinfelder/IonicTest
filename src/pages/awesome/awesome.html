@@ -15,4 +15,19 @@
 
 <ion-content padding>
 
+<section>
+    <h2>Search For A Star Wars Character</h2>
+    <input [(ngModel)]="name" type="text" placeholder="Character Name" (keyup)="findCharacter(name)" />
+</section>
+
+<section>
+
+<h2 *ngIf="(apiObservable | async) !==null">SEARCH RESULTS!</h2>
+
+<li *ngFor='let character of apiObservable | async'>{{character.name}}</li>
+
+</section>
+
+
+
 </ion-content>

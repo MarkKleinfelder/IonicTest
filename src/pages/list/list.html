@@ -1,20 +1,31 @@
+<!--
+  Generated template for the ListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>My First List</ion-title>
+    <ion-title>List</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
+
+<ion-content padding>
+
+<h1>Suprise! It's a List!</h1>
+
+<ul>
+	<li *ngFor="let comment of comments; let i = index">{{comment.text}} by: {{comment.author}} <button type='delete' (click)='deleteComment(i)'>DELETE</button>  <button type='update' (click)='updateComment(i)'>UPDATE</button>
+	</li>
+
+</ul>
+
+<input type="text" [(ngModel)]="commentText" placeholder="comment">
+<input type="text" [(ngModel)]="authorText" placeholder="author">
+<button type='submit' (click)='submitComment()'>Submit</button>
+
+
 </ion-content>

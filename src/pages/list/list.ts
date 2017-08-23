@@ -1,34 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 
-import { NavController, NavParams } from 'ionic-angular';
 
-import { ItemDetailsPage } from '../item-details/item-details';
+/**
+ * Generated class for the ListPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
 
+@IonicPage()
 @Component({
   selector: 'page-list',
-  templateUrl: 'list.html'
+  templateUrl: 'list.html',
 })
+
 export class ListPage {
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  comments=[];
+
+  commentText='';
+
+  authorText='';
+
+  comment={
+  	text:'',
+  	author:''
+  }
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
 
-  itemTapped(event, item) {
-    this.navCtrl.push(ItemDetailsPage, {
-      item: item
-    });
-  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListPage');
+}
+
+	submitComment(){
+		this.comment={
+		text: this.commentText,
+		author: this.authorText
+		}
+		this.comments.push(this.comment)
+	}
+
+	deleteComment(i){
+		this.comments.splice(i,1)
+	}
+
+	updateComment(i){
+		this.comment ={
+			text: this.commentText,
+			author: this.authorText
+		}
+		this.comments.splice(i,1,this.comment)
+	}
+
 }

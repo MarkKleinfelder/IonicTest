@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
@@ -15,6 +14,7 @@ import { AwesomePage } from '../pages/awesome/awesome';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+
   // make HelloIonicPage the root (or first) page
   rootPage = HelloIonicPage;
   pages: Array<{title: string, component: any}>;
@@ -23,7 +23,7 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
   ) {
     this.initializeApp();
 
@@ -31,7 +31,9 @@ export class MyApp {
     this.pages = [
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'My First List', component: ListPage },
-      { title: 'Awesome page', component: AwesomePage}
+      { title: 'Awesome page', component: AwesomePage},
+      { title: 'A List!', component: ListPage}
+
     ];
   }
 
